@@ -1,5 +1,6 @@
 import click
 
+from wp_docker_manager.add import add_instance
 from wp_docker_manager.check import check_environment
 from wp_docker_manager.install import install_environment
 
@@ -23,6 +24,16 @@ def install() -> None:
     Configures everything missing to ensure the environment is right.
     """
     install_environment()
+
+@main.command('add')
+@click.argument('id', help='Unique identifier for the new instance')
+@click.argument('domain', help='Domain where the new instance will be served at')
+def add(id: str, domain: str) -> None:
+    """
+    Adds a new configured WordPress instance.
+    """
+    # TODO: wordpress is a reserved name due to how the WordPress ZIP release is, we should validate it
+    add_instance(id, domain)
 
 if __name__ == '__main__':
     main()

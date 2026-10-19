@@ -10,6 +10,7 @@ def check_environment() -> None:
 
     # Get Docker version (minimal check to ensure Docker is installed and reachable)
     click.echo(f'Docker version: {docker_client.version()['Version']}')
+    # TODO: Check that BuildX is installed
 
     # Check if both networks exist
     missing_networks = ['wpdm-services', 'wpdm-proxy']

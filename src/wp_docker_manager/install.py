@@ -33,5 +33,9 @@ def install_environment():
         restart_policy={"Name": 'always'},
         network='wpdm-services',
         # TODO: Obviously, change this!
+        # TODO: We should have a specific user for WPDM, never use root (and disable `root`@`%`)
         environment={'MARIADB_ROOT_PASSWORD': 'root'}
     )
+
+    # Ensure the sites folder exists
+    os.makedirs('/opt/wp-docker-manager/sites')
