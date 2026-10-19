@@ -29,7 +29,7 @@ def install() -> None:
 @main.command('list')
 def list() -> None:
     """
-    List all currently available instances.
+    Lists all currently available instances.
     """
     list_instances()
 
