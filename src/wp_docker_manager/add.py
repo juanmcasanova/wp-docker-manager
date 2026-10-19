@@ -72,7 +72,7 @@ def add_instance(id: str, domain: str) -> None:
     click.echo('Building Docker image...')
     # TODO: docker-py is not compatible with BuildKit: https://github.com/docker/docker-py/issues/2230
     #       https://github.com/aio-libs/aiodocker seems to be
-    subprocess.run(['docker', 'buildx', 'build', '-t', f'wpdm-{id}', f'{os.path.dirname(os.path.abspath(__file__))}/resources'], stdout=sys.stdout, stderr=sys.stderr)
+    subprocess.run(['docker', 'buildx', 'build', '-t', f'wpdm-{id}', f'{os.path.dirname(os.path.abspath(__file__))}/resources'], stdout=sys.stdout, stderr=sys.stderr, check=True)
 
     click.echo('Creating Docker container...')
     container = docker_client.containers.run(
