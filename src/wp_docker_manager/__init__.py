@@ -3,6 +3,7 @@ import click
 from wp_docker_manager.add import add_instance
 from wp_docker_manager.check import check_environment
 from wp_docker_manager.install import install_environment
+from wp_docker_manager.list import list_instances
 
 
 @click.group()
@@ -24,6 +25,13 @@ def install() -> None:
     Configures everything missing to ensure the environment is right.
     """
     install_environment()
+
+@main.command('list')
+def list() -> None:
+    """
+    List all currently available instances.
+    """
+    list_instances()
 
 @main.command('add')
 @click.argument('id', help='Unique identifier for the new instance')
